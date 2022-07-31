@@ -1,10 +1,11 @@
 // import type { NextPage } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import BookItem from '../components/BookItem';
+import MetaData from '../components/Meta';
 import styles from '../styles/Home.module.css';
-import { Book } from '../types';
+import { BookType } from '../types';
+import homeCover from '../assets/main-img.jpg';
 
 const Home = ({ data, books }: Props) => {
   useEffect(() => {
@@ -12,11 +13,7 @@ const Home = ({ data, books }: Props) => {
   }, [books]);
   return (
     <div className={styles.container}>
-      <Head>
-        <title>{data.SEO.metaTitle}</title>
-        <meta name="description" content={data.SEO.metaDescription} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MetaData title={data.SEO.metaTitle} description={data.SEO.metaDescription} />
 
       <main className={styles.main}>
         <h1 className={styles.title}>
@@ -29,7 +26,7 @@ const Home = ({ data, books }: Props) => {
 
         <section className={styles.booksContainer}>
           <div className={styles.homeBookCover}>
-            <Image alt="Book shelf" src={require('../assets/main-img.jpg')} />
+            <Image alt="Book shelf" src={homeCover} />
           </div>
 
           <div className={styles.grid}>
@@ -74,7 +71,7 @@ interface Props {
     };
     homepageCopy: string;
   };
-  books: Array<Book>;
+  books: Array<BookType>;
 }
 
 export default Home;

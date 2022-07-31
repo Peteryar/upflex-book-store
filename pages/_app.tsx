@@ -2,11 +2,10 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Layout from '../components/Layout';
 import { ContextStore } from '../context/StoreContext';
-import { Book } from '../types';
 
-function MyApp({ Component, pageProps, books }: Props) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ContextStore books={books}>
+    <ContextStore>
       <Layout>
         <Component {...pageProps} />
       </Layout>
@@ -14,7 +13,4 @@ function MyApp({ Component, pageProps, books }: Props) {
   );
 }
 
-interface Props extends AppProps {
-  books: Array<Book>;
-}
 export default MyApp;

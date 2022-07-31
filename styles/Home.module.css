@@ -54,13 +54,13 @@
 
 .homeBookCover {
   display: flex;
-  width: 40%;
 }
 
 .booksContainer {
   display: flex;
   width:80%;
   justify-content: space-between;
+  align-items: stretch;
 }
 
 .code {

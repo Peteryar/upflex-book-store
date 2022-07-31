@@ -1,19 +1,34 @@
 import React, { ReactNode, useEffect, useReducer } from 'react';
-import { Book } from '../types';
+import Book from '../pages/books/[id]';
+import { BookType } from '../types';
 import ACTIONS from './actions';
 
 const initialState = {
-  books: []
+  basket: [],
+  count: 0
 };
 
+interface Book extends BookType {
+  count: number;
+}
 interface InitialState {
-  books: Array<Book>;
+  basket: Array<Book>;
+  count: number;
 }
 
 const reducer = (state: InitialState, action: Actions) => {
   switch (action.type) {
-    case ACTIONS.FETCH_BOOKS:
-      return { ...state, books: action.payload };
+    case ACTIONS.ADD_BOOK:
+      console.log('addingItem to basket');
+      const index = state.basket.findIndex((book) => book.title === action.payload.title);
+      if (index !== -1) {
+        const book = state.basket[index];
+        book.count += 1;
+      } else {
+        state.basket.push({ ...action.payload, count: 1 });
+      }
+      state.count += 1;
+      return state;
     default:
       return state;
   }
@@ -21,7 +36,7 @@ const reducer = (state: InitialState, action: Actions) => {
 
 interface Actions {
   type: string;
-  payload: Array<Book>;
+  payload: BookType;
 }
 
 const Store = React.createContext({} as ContextInterface);
@@ -31,17 +46,16 @@ interface ContextInterface {
   dispatch: React.Dispatch<Actions>;
 }
 
-function ContextStore({ children, books }: Props) {
+function ContextStore({ children }: Props) {
   const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
-    console.log('books----->', books);
-  }, [books]);
+    console.log('state-------->', state.count);
+  }, [state.count]);
   return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;
 }
 
 interface Props {
   children: ReactNode;
-  books: Array<Book>;
 }
 
 export default Store;

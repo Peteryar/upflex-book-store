@@ -1,0 +1,50 @@
+.bookPageContainer {
+    width: 80%;
+}
+.bookPageContainer > p {
+   cursor: pointer;
+}
+
+.bookPageContainer section {
+    display: flex;
+    align-items: flex-end;
+}
+
+.bookPageContainer button {
+    height: 50px;
+    width: 150px;
+    margin-left: 10px;
+    background-color: #0070f3;
+    border-radius: 10px;
+    border: none;
+}
+
+.bookContainer {
+    border: 1px solid grey;
+    width: 250px;
+    border-radius: 10px;
+}
+
+.bookContainer img {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.bookContainer div {
+    padding: 0 10px;
+}
+
+.bookContainer:hover,
+.bookContainer:focus,
+.bookContainer:active {
+    color: #0070f3;
+    border-color: #0070f3;
+}
+
+/* .bookPageContainer button:hover,
+.bookPageContainer button:focus, */
+.bookPageContainer button:active {
+    background-color: #fff;
+    color: #0070f3;
+    cursor: pointer;
+}
