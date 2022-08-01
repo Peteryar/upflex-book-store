@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReactNode, useContext } from 'react';
+import { ReactNode, useCallback, useContext } from 'react';
 import Store from '../context/StoreContext';
 
 import styles from '../styles/Layout.module.css';
@@ -18,7 +18,7 @@ function Layout({ children }: LayoutProps) {
         </Link>
         <span className={styles.basket}>
           {state.itemsCount === 0 ? <p>Empty</p> : <p>{state.itemsCount} item(s)</p>}
-          <Button handleClick={() => router.push('/basket')} title="VIEW BASKET" />
+          <Button handleClick={useCallback(() => router.push('/basket'), [])} title="VIEW BASKET" />
         </span>
       </header>
       {children}

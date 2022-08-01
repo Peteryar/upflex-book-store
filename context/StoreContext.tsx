@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useReducer } from 'react';
+import React, { ReactNode, useReducer } from 'react';
 import Book from '../pages/books/[id]';
 import { BookType } from '../types';
 import ACTIONS from './actions';
@@ -29,12 +29,14 @@ const reducer = (state: InitialState, action: Actions) => {
         state.basket.push({ ...action.payload, quantity: 1 });
       }
       return { ...state, itemsCount: state.itemsCount + 1 };
+
     case ACTIONS.REMOVE_BOOK:
       state.basket[index].quantity -= 1;
       if (state.basket[index].quantity === 0) {
         state.basket.splice(index, 1);
       }
       return { ...state, itemsCount: state.itemsCount - 1 };
+
     default:
       return state;
   }
@@ -54,9 +56,6 @@ interface ContextInterface {
 
 function ContextStore({ children }: Props) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  useEffect(() => {
-    console.log('state ----->', state);
-  }, [state]);
   return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;
 }
 

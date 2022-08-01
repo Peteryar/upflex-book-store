@@ -4,17 +4,17 @@ import { BookType } from '../../../types';
 import styles from '../../../styles/Book.module.css';
 import MetaData from '../../../components/Meta';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { memo, useCallback, useContext } from 'react';
 import Store from '../../../context/StoreContext';
 import ACTIONS from '../../../context/actions';
 import Button from '../../../components/Button';
 
 function Book({ book }: Props) {
   const { dispatch } = useContext(Store);
-
-  const addBookToBasket = () => {
-    dispatch({ type: ACTIONS.ADD_BOOK, payload: book });
-  };
+  const addBookToBasket = useCallback(
+    () => dispatch({ type: ACTIONS.ADD_BOOK, payload: book }),
+    []
+  );
   return (
     <div className={styles.bookPageContainer}>
       <MetaData title={book.metaTitle} description={book.metaDescription} />
@@ -55,4 +55,4 @@ interface Props {
   book: BookType;
 }
 
-export default Book;
+export default memo(Book);

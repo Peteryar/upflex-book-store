@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 function MetaData({ title, description }: Props) {
   return (
@@ -15,4 +16,4 @@ interface Props {
   description: string;
 }
 
-export default MetaData;
+export default memo(MetaData);

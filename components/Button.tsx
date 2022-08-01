@@ -1,6 +1,7 @@
-import { MouseEventHandler } from 'react';
+import { memo, MouseEventHandler } from 'react';
 
 function Button({ title, handleClick, width }: Props) {
+  console.log('I rerendered and I am a button');
   return (
     <button className="button" onClick={handleClick}>
       {title}
@@ -40,4 +41,4 @@ interface Props {
   handleClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export default Button;
+export default memo(Button);

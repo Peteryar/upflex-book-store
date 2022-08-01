@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useContext } from 'react';
+import { memo, useCallback, useContext } from 'react';
 import BookItem from '../components/BookItem';
 import Button from '../components/Button';
 import ACTIONS from '../context/actions';
@@ -8,16 +8,16 @@ import { BookType } from '../types';
 
 function Basket() {
   const { state, dispatch } = useContext(Store);
+  const removeItemFromBasket = useCallback(
+    (book: Book) => dispatch({ type: ACTIONS.REMOVE_BOOK, payload: book }),
+    []
+  );
 
-  const removeItemFromBasket = (book: Book) => {
-    dispatch({ type: ACTIONS.REMOVE_BOOK, payload: book });
-  };
-
-  const handlePay = () => {
+  const handlePay = useCallback(() => {
     const transactingItems: Array<{ id: number; quantity: number }> = [];
     state.basket.map(({ id, quantity }) => transactingItems.push({ id, quantity }));
     console.log(transactingItems);
-  };
+  }, []);
   return (
     <div className="container">
       <Link href={'/'}>
@@ -59,4 +59,4 @@ interface Book extends BookType {
   quantity: number;
 }
 
-export default Basket;
+export default memo(Basket);

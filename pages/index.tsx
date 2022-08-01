@@ -1,6 +1,5 @@
 // import type { NextPage } from 'next';
 import Image from 'next/image';
-import { useEffect } from 'react';
 import BookItem from '../components/BookItem';
 import MetaData from '../components/Meta';
 import styles from '../styles/Home.module.css';
@@ -8,9 +7,6 @@ import { BookType } from '../types';
 import homeCover from '../assets/main-img.jpg';
 
 const Home = ({ data, books }: Props) => {
-  useEffect(() => {
-    console.log('booksFromHome', books);
-  }, [books]);
   return (
     <div className={styles.container}>
       <MetaData title={data.SEO.metaTitle} description={data.SEO.metaDescription} />
@@ -57,7 +53,6 @@ export const getStaticProps = async () => {
   const res1 = await fetch('http://localhost:3000/books');
   const data = await res.json();
   const books = await res1.json();
-  console.log('books-', books);
   return {
     props: { data, books }
   };
