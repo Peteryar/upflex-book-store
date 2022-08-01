@@ -1,17 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ReactNode, useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { ReactNode, useContext } from 'react';
 import Store from '../context/StoreContext';
 
 import styles from '../styles/Layout.module.css';
+import Button from './Button';
 
 function Layout({ children }: LayoutProps) {
-  const {
-    state: { count }
-  } = useContext(Store);
-  useEffect(() => {
-    console.log('state---->', count);
-  });
+  const { state } = useContext(Store);
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -19,8 +17,8 @@ function Layout({ children }: LayoutProps) {
           <Image width={250} height={100} alt="logo" src={require('../assets/logo.jpg')} />
         </Link>
         <span className={styles.basket}>
-          {count === 0 ? <p>Empty</p> : <p>{count} item(s)</p>}
-          <button className={styles.viewButton}>VIEW BASKET</button>
+          {state.itemsCount === 0 ? <p>Empty</p> : <p>{state.itemsCount} item(s)</p>}
+          <Button handleClick={() => router.push('/basket')} title="VIEW BASKET" />
         </span>
       </header>
       {children}

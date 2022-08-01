@@ -5,30 +5,36 @@ import ACTIONS from './actions';
 
 const initialState = {
   basket: [],
-  count: 0
+  itemsCount: 0
 };
 
 interface Book extends BookType {
-  count: number;
+  quantity: number;
 }
 interface InitialState {
   basket: Array<Book>;
-  count: number;
+  itemsCount: number;
 }
 
 const reducer = (state: InitialState, action: Actions) => {
+  const index = state.basket.findIndex((book) => book.id === action.payload.id);
   switch (action.type) {
     case ACTIONS.ADD_BOOK:
-      console.log('addingItem to basket');
-      const index = state.basket.findIndex((book) => book.title === action.payload.title);
       if (index !== -1) {
-        const book = state.basket[index];
-        book.count += 1;
+        state.basket[index] = {
+          ...state.basket[index],
+          quantity: state.basket[index].quantity + 1
+        };
       } else {
-        state.basket.push({ ...action.payload, count: 1 });
+        state.basket.push({ ...action.payload, quantity: 1 });
       }
-      state.count += 1;
-      return state;
+      return { ...state, itemsCount: state.itemsCount + 1 };
+    case ACTIONS.REMOVE_BOOK:
+      state.basket[index].quantity -= 1;
+      if (state.basket[index].quantity === 0) {
+        state.basket.splice(index, 1);
+      }
+      return { ...state, itemsCount: state.itemsCount - 1 };
     default:
       return state;
   }
@@ -49,8 +55,8 @@ interface ContextInterface {
 function ContextStore({ children }: Props) {
   const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
-    console.log('state-------->', state.count);
-  }, [state.count]);
+    console.log('state ----->', state);
+  }, [state]);
   return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;
 }
 

@@ -40,11 +40,3 @@
     color: #0070f3;
     border-color: #0070f3;
 }
-
-/* .bookPageContainer button:hover,
-.bookPageContainer button:focus, */
-.bookPageContainer button:active {
-    background-color: #fff;
-    color: #0070f3;
-    cursor: pointer;
-}

@@ -31,7 +31,7 @@ const Home = ({ data, books }: Props) => {
 
           <div className={styles.grid}>
             {books.map((book, index) => (
-              <BookItem book={book} key={index} />
+              <BookItem showDescription={true} book={book} key={index} />
             ))}
           </div>
         </section>

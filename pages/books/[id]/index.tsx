@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import Store from '../../../context/StoreContext';
 import ACTIONS from '../../../context/actions';
+import Button from '../../../components/Button';
 
 function Book({ book }: Props) {
   const { dispatch } = useContext(Store);
@@ -34,7 +35,7 @@ function Book({ book }: Props) {
             </span>
           </div>
         </div>
-        <button onClick={addBookToBasket}>Add to basket</button>
+        <Button handleClick={addBookToBasket} title="Add to basket" />
       </section>
     </div>
   );
