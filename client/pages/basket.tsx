@@ -8,7 +8,10 @@ import Store from '../context/StoreContext';
 import { BookType } from '../types';
 
 function Basket() {
-  const { state, dispatch } = useContext(Store);
+  const {
+    state: { basket },
+    dispatch
+  } = useContext(Store);
   const removeItemFromBasket = useCallback(
     (book: Book) => dispatch({ type: ACTIONS.REMOVE_BOOK, payload: book }),
     []
@@ -16,7 +19,7 @@ function Basket() {
 
   const handlePay = useCallback(() => {
     const transactingItems: Array<{ id: number; quantity: number }> = [];
-    state.basket.map(({ id, quantity }) => transactingItems.push({ id, quantity }));
+    basket.map(({ id, quantity }) => transactingItems.push({ id, quantity }));
     console.log(transactingItems);
   }, []);
   return (
@@ -25,15 +28,19 @@ function Basket() {
       <Link href={'/'}>
         <p> &lt; Go Back</p>
       </Link>
-      <h3>Basket Summary</h3>
-      {state.basket.map((book: Book) => (
+      {basket.length > 0 && <h3>Basket Summary</h3>}
+      {basket.map((book: Book) => (
         <div className="item-con" key={book.id}>
           <BookItem showDescription={false} book={book} />
           <h3>X {book.quantity}</h3>
           <Button title="Remove" handleClick={() => removeItemFromBasket(book)} />
         </div>
       ))}
-      <Button width={300} handleClick={handlePay} title="PAY" />
+      {basket.length > 0 ? (
+        <Button width={300} handleClick={handlePay} title="PAY" />
+      ) : (
+        <h3 className="empty-text">Basket is Empty</h3>
+      )}
       <style>
         {`
         .container{
@@ -51,6 +58,9 @@ function Basket() {
                   height:50px;
                   align-self:center;
                   margin-left:10px;
+              }
+              .empty-text{
+                text-align:center;
               }`}
       </style>
     </div>
