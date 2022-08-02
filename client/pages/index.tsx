@@ -5,6 +5,7 @@ import MetaData from '../components/Meta';
 import styles from '../styles/Home.module.css';
 import { BookType } from '../types';
 import homeCover from '../assets/main-img.jpg';
+import URL from '../config';
 
 const Home = ({ data, books }: Props) => {
   return (
@@ -49,8 +50,8 @@ const Home = ({ data, books }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:4000/homepage');
-  const res1 = await fetch('http://localhost:4000/books');
+  const res = await fetch(`${URL}/homepage`);
+  const res1 = await fetch(`${URL}/books`);
   const data = await res.json();
   const books = await res1.json();
   return {

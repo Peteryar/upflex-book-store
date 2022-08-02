@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { memo, useCallback, useContext } from 'react';
 import BookItem from '../components/BookItem';
 import Button from '../components/Button';
+import Meta from '../components/Meta';
 import ACTIONS from '../context/actions';
 import Store from '../context/StoreContext';
 import { BookType } from '../types';
@@ -20,6 +21,7 @@ function Basket() {
   }, []);
   return (
     <div className="container">
+      <Meta title="Basket" />
       <Link href={'/'}>
         <p> &lt; Go Back</p>
       </Link>

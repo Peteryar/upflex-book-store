@@ -13,7 +13,7 @@ function MetaData({ title, description }: Props) {
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
 }
 
 export default memo(MetaData);

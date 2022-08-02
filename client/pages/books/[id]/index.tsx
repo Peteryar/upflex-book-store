@@ -8,6 +8,7 @@ import { memo, useCallback, useContext } from 'react';
 import Store from '../../../context/StoreContext';
 import ACTIONS from '../../../context/actions';
 import Button from '../../../components/Button';
+import URL from '../../../config';
 
 function Book({ book }: Props) {
   const { dispatch } = useContext(Store);
@@ -42,7 +43,7 @@ function Book({ book }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch(`http://localhost:4000/books/${context?.params?.id}`);
+  const res = await fetch(`${URL}/books/${context?.params?.id}`);
   const book = await res.json();
   return {
     props: {
