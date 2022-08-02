@@ -42,7 +42,7 @@ function Book({ book }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch(`http://localhost:3000/books/${context?.params?.id}`);
+  const res = await fetch(`http://localhost:4000/books/${context?.params?.id}`);
   const book = await res.json();
   return {
     props: {

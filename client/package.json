@@ -3,17 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "json-server": "json-server --watch db.json",
-    "start": "per-env",
-    "start:development": "concurrently \"next dev\" \"npm run json-server\"",
-    "start:production": "concurrently \"next start\" \"npm run json-server\"",
-    "dev": "next dev",
+    "start": "next start",
+    "dev": "concurrently \"next dev\" \"cd ../server && npm run server\"",
     "build": "next build",
     "lint": "next lint"
   },
   "dependencies": {
     "concurrently": "^7.3.0",
-    "json-server": "^0.17.0",
     "next": "12.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"

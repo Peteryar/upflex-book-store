@@ -1,7 +1,6 @@
 import { memo, MouseEventHandler } from 'react';
 
 function Button({ title, handleClick, width }: Props) {
-  console.log('I rerendered and I am a button');
   return (
     <button className="button" onClick={handleClick}>
       {title}

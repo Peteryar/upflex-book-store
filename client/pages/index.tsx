@@ -49,8 +49,8 @@ const Home = ({ data, books }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/homepage');
-  const res1 = await fetch('http://localhost:3000/books');
+  const res = await fetch('http://localhost:4000/homepage');
+  const res1 = await fetch('http://localhost:4000/books');
   const data = await res.json();
   const books = await res1.json();
   return {
