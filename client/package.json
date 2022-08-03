@@ -7,11 +7,9 @@
     "dev": "concurrently \"next dev\" \"cd ../server && npm start\"",
     "build": "next build",
     "lint": "next lint",
-    "test": "concurrently \"cd ../server && npm start\" \"jest --watch\"",
-    "clear-cache": "jest --clearCache"
+    "test": "concurrently \"cd ../server && npm start\" \"jest --verbose\""
   },
   "dependencies": {
-    "concurrently": "^7.3.0",
     "next": "12.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -24,6 +22,7 @@
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
+    "concurrently": "^7.3.0",
     "eslint": "^8.20.0",
     "eslint-config-next": "12.2.3",
     "eslint-config-prettier": "^8.5.0",

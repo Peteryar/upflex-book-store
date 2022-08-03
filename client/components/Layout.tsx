@@ -14,10 +14,14 @@ function Layout({ children }: LayoutProps) {
     <div className={styles.container}>
       <header data-testid="page-header" className={styles.header}>
         <Link href="/">
-          <Image width={250} height={100} alt="logo" src={require('../assets/logo.jpg')} />
+          <a>
+            <Image width={250} height={100} alt="logo" src={require('../assets/logo.jpg')} />
+          </a>
         </Link>
         <span className={styles.basket}>
-          <p data-testid="basket-text">{state.itemsCount === 0 ?'Empty':`${state.itemsCount} item(s)`}</p>
+          <p data-testid="basket-text">
+            {state.itemsCount === 0 ? 'Empty' : `${state.itemsCount} item(s)`}
+          </p>
           <Button handleClick={useCallback(() => router.push('/basket'), [])} title="VIEW BASKET" />
         </span>
       </header>

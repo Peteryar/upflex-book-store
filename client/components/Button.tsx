@@ -1,34 +1,10 @@
 import { memo, MouseEventHandler } from 'react';
+import styles from '../styles/Button.module.css';
 
 function Button({ title, handleClick, width }: Props) {
   return (
-    <button data-testid={title} className="button" onClick={handleClick}>
+    <button data-testid={title} className={styles.button} onClick={handleClick}>
       {title}
-      <style>
-        {`
-            .button{
-                    width: ${width || 200}px;
-                    height: 50px;
-                    margin-left: 10px;
-                    color: inherit;
-                    text-decoration: none;
-                    border-radius: 10px;
-                    background-color: #0070f3;
-                    border:none;
-                    transition: color 0.15s ease, border-color 0.15s ease;
-                    cursor: pointer;
-                }
-                
-                .button:hover {
-                    background-color: #0f509b;
-                }
-                .button:active{
-                    background-color: #fff;
-                    color: #0070f3;
-                }
-            }
-          `}
-      </style>
     </button>
   );
 }
