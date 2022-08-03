@@ -4,7 +4,7 @@ import { BookType } from '../../../types';
 import styles from '../../../styles/Book.module.css';
 import MetaData from '../../../components/Meta';
 import Link from 'next/link';
-import { memo, useCallback, useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import Store from '../../../context/StoreContext';
 import ACTIONS from '../../../context/actions';
 import Button from '../../../components/Button';

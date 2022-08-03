@@ -17,12 +17,14 @@ const Home = ({ data, books }: Props) => {
           Upflex Online <a>Book Store</a>
         </h1>
 
-        <p data-testid='home-description' className={styles.description}>Here you can order amazing books!</p>
+        <p data-testid="home-description" className={styles.description}>
+          Here you can order amazing books!
+        </p>
 
         <p className={styles.copy}>{data.homepageCopy}</p>
 
         <section className={styles.booksContainer}>
-          <div  data-testid="page-cover-image" className={styles.homeBookCover}>
+          <div data-testid="page-cover-image" className={styles.homeBookCover}>
             <Image alt="Book shelf" src={homeCover} />
           </div>
 

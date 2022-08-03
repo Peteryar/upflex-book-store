@@ -3,7 +3,7 @@ import styles from '../styles/Button.module.css';
 
 function Button({ title, handleClick, width }: Props) {
   return (
-    <button data-testid={title} className={styles.button} onClick={handleClick}>
+    <button style={{ width }} data-testid={title} className={styles.button} onClick={handleClick}>
       {title}
     </button>
   );
