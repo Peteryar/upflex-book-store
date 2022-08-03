@@ -5,10 +5,10 @@ import Link from 'next/link';
 function BookItem({ book, showDescription }: Props) {
   return (
     <Link href="/books/[id]" as={`/books/${book.id}`}>
-      <span className={styles.bookItem}>
-        <h2>
-          {book.title} {showDescription ? `&rarr;` : ''}
-        </h2>
+      <span data-testid={`book-item${book.id}`} className={styles.bookItem}>
+        {showDescription?<h2>
+          {book.title} &rarr;
+        </h2>:<h2>{book.title}</h2>}
         {showDescription && <p>{book.metaDescription}</p>}
       </span>
     </Link>

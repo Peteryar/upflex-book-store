@@ -2,7 +2,7 @@ import { memo, MouseEventHandler } from 'react';
 
 function Button({ title, handleClick, width }: Props) {
   return (
-    <button className="button" onClick={handleClick}>
+    <button data-testid={title} className="button" onClick={handleClick}>
       {title}
       <style>
         {`

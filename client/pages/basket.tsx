@@ -23,14 +23,14 @@ function Basket() {
     console.log(transactingItems);
   }, []);
   return (
-    <div className="container">
+    <div data-testid="basket-page" className="container">
       <Meta title="Basket" />
       <Link href={'/'}>
         <p> &lt; Go Back</p>
       </Link>
       {basket.length > 0 && <h3>Basket Summary</h3>}
       {basket.map((book: Book) => (
-        <div className="item-con" key={book.id}>
+        <div data-testid="basket-item-con" className="item-con" key={book.id}>
           <BookItem showDescription={false} book={book} />
           <h3>X {book.quantity}</h3>
           <Button title="Remove" handleClick={() => removeItemFromBasket(book)} />

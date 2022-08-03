@@ -3,7 +3,7 @@ import { memo } from 'react';
 
 function MetaData({ title, description }: Props) {
   return (
-    <Head>
+    <Head data-testid="meta-tag">
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="icon" href="/favicon.ico" />

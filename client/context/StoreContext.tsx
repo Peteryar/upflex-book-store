@@ -3,7 +3,7 @@ import Book from '../pages/books/[id]';
 import { BookType } from '../types';
 import ACTIONS from './actions';
 
-const initialState = {
+export const initialState = {
   basket: [],
   itemsCount: 0
 };
@@ -16,7 +16,7 @@ interface InitialState {
   itemsCount: number;
 }
 
-const reducer = (state: InitialState, action: Actions) => {
+export const reducer = (state: InitialState, action: Actions) => {
   const index = state.basket.findIndex((book) => book.id === action.payload.id);
   switch (action.type) {
     case ACTIONS.ADD_BOOK:

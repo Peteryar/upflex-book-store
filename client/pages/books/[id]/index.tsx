@@ -17,7 +17,7 @@ function Book({ book }: Props) {
     []
   );
   return (
-    <div className={styles.bookPageContainer}>
+    <div data-testid="book-page" className={styles.bookPageContainer}>
       <MetaData title={book.metaTitle} description={book.metaDescription} />
       <Link href={'/'}>
         <p> &lt; Go Back</p>
@@ -56,4 +56,4 @@ interface Props {
   book: BookType;
 }
 
-export default memo(Book);
+export default Book;

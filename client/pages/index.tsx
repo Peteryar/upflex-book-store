@@ -17,16 +17,16 @@ const Home = ({ data, books }: Props) => {
           Upflex Online <a>Book Store</a>
         </h1>
 
-        <p className={styles.description}>Here you can order amazing books!</p>
+        <p data-testid='home-description' className={styles.description}>Here you can order amazing books!</p>
 
         <p className={styles.copy}>{data.homepageCopy}</p>
 
         <section className={styles.booksContainer}>
-          <div className={styles.homeBookCover}>
+          <div  data-testid="page-cover-image" className={styles.homeBookCover}>
             <Image alt="Book shelf" src={homeCover} />
           </div>
 
-          <div className={styles.grid}>
+          <div data-testid="book-item-con" className={styles.grid}>
             {books.map((book, index) => (
               <BookItem showDescription={true} book={book} key={index} />
             ))}
@@ -34,7 +34,7 @@ const Home = ({ data, books }: Props) => {
         </section>
       </main>
 
-      <footer className={styles.footer}>
+      <footer data-testid="footer" className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"

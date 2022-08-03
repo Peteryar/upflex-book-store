@@ -12,12 +12,12 @@ function Layout({ children }: LayoutProps) {
   const router = useRouter();
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
+      <header data-testid="page-header" className={styles.header}>
         <Link href="/">
           <Image width={250} height={100} alt="logo" src={require('../assets/logo.jpg')} />
         </Link>
         <span className={styles.basket}>
-          {state.itemsCount === 0 ? <p>Empty</p> : <p>{state.itemsCount} item(s)</p>}
+          <p data-testid="basket-text">{state.itemsCount === 0 ?'Empty':`${state.itemsCount} item(s)`}</p>
           <Button handleClick={useCallback(() => router.push('/basket'), [])} title="VIEW BASKET" />
         </span>
       </header>
