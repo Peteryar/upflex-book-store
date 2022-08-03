@@ -12,3 +12,7 @@ if you like to test run this project locally on your machine then
 3. cd client and run `npm install`
 3. while at client directory run `npm run dev` to run app locally in dev mode
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Running tests for Project
+
+1. cd client and run `npm test` this command will run the written unit tests
