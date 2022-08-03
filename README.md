@@ -1,5 +1,5 @@
 # Upflex Book store app
-This is a project done as an assessment task to join a Upflex Engineering team
+This is a project done as an assessment task to join Upflex Engineering team
 
 ## Running live project
 you can see the project running live [here](https://upflex-book-store.vercel.app/)
