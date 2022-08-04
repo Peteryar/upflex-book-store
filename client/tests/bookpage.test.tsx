@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, cleanup, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import data from '../db';
 import Layout from '../components/Layout';
 import Book from '../pages/books/[id]/index';
-import { reducer, initialState, ContextStore } from '../context/StoreContext';
+import { ContextStore } from '../context/StoreContext';
 
 const testIds = {
   addBtn: 'Add to basket',
