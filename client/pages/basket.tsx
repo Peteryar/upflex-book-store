@@ -19,7 +19,7 @@ function Basket() {
 
   const handlePay = useCallback(() => {
     const transactingItems: Array<{ id: number; quantity: number }> = [];
-    basket.map(({ id, quantity }) => transactingItems.push({ id, quantity }));
+    basket.map(({ id, quantity }) => transactingItems.push({ id: id, quantity }));
     console.log(transactingItems);
   }, []);
   return (
